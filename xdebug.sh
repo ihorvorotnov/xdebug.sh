@@ -53,6 +53,11 @@ function help_message() {
 
 function check_status() {
 	STATUS=`php -m | grep xdebug`
+	return
+}
+
+function status_message() {
+	check_status
 	if [[ $STATUS == "" ]]; then
 		success_message "Xdebug extension is currently ${red}disabled${off}.\n   Run '${white}xdebug on${off}' to enable it."
 	else
@@ -92,20 +97,20 @@ case "$1" in
 		success_message "Enabling Xdebug...\n"
 		enable_xdebug
 		valet restart
-		check_status
+		status_message
 		;;
 	"off")
 		success_message "Disabling Xdebug...\n"
 		disable_xdebug
 		valet restart
-		check_status
+		status_message
 		;;
 	"help")
 		help_message
 		exit 0
 		;;
 	"status")
-		check_status
+		status_message
 		exit 0
 		;;
 	*)
