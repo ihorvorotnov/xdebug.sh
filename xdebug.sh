@@ -16,7 +16,7 @@
 
 CONFIG_PATH="/usr/local/etc/php/7.2/conf.d/"
 CONFIG_NAME="ext-xdebug.ini"
-CONFIG_NAME_DISABLED="ext-xdebug.ini"
+CONFIG_NAME_DISABLED="$CONFIG_NAME.disabled"
 
 # Define colors
 
@@ -60,6 +60,14 @@ function check_status() {
 	fi
 }
 
+function enable_xdebug() {
+	mv "$CONFIG_PATH$CONFIG_NAME_DISABLED" "$CONFIG_PATH$CONFIG_NAME"
+}
+
+function disable_xdebug() {
+	mv "$CONFIG_PATH$CONFIG_NAME" "$CONFIG_PATH$CONFIG_NAME_DISABLED"
+}
+
 # Handle passed args
 case "$1" in
 	"")
@@ -68,10 +76,16 @@ case "$1" in
 		exit 1
 		;;
 	"on")
-		success_message "Enabling Xdebug..."
+		success_message "Enabling Xdebug...\n"
+		enable_xdebug
+		valet restart
+		check_status
 		;;
 	"off")
-		success_message "Disabling Xdebug..."
+		success_message "Disabling Xdebug...\n"
+		disable_xdebug
+		valet restart
+		check_status
 		;;
 	"help")
 		help_message
