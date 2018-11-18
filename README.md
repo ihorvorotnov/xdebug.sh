@@ -2,6 +2,8 @@
 
 Toggle Xdebug PHP extension on and off, from command line.
 
+![Screencast](screenshot.gif)
+
 ## Requirements
 
 - macOS
@@ -32,6 +34,6 @@ Both assumptions are planned to be removed in next update.
 
 ## Plans
 
-- [ ] Add GIF screenshot
+- [x] Add GIF screenshot
 - [ ] Add automatic config discovery
 - [ ] Make in installable via Homebrew
