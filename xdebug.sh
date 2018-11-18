@@ -94,12 +94,22 @@ case "$1" in
 		exit 1
 		;;
 	"on")
+		check_status
+		if [[ $STATUS != "" ]]; then
+			success_message "Xdebug extension is already ${green}enabled${off}."
+			exit 1
+		fi
 		success_message "Enabling Xdebug...\n"
 		enable_xdebug
 		valet restart
 		status_message
 		;;
 	"off")
+		check_status
+		if [[ $STATUS == "" ]]; then
+			success_message "Xdebug extension is already ${red}disabled${off}."
+			exit 1
+		fi
 		success_message "Disabling Xdebug...\n"
 		disable_xdebug
 		valet restart
