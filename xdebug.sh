@@ -60,6 +60,14 @@ function check_status() {
 	fi
 }
 
+function check_installed() {
+	INSTALLED=`pecl list | grep xdebug`
+	if [[ $INSTALLED == "" ]]; then
+		error_message "It looks like Xdebug extension is not installed yet.\n   Please install it via PECL first."
+		exit 1;
+	fi
+}
+
 function enable_xdebug() {
 	mv "$CONFIG_PATH$CONFIG_NAME_DISABLED" "$CONFIG_PATH$CONFIG_NAME"
 }
@@ -68,7 +76,12 @@ function disable_xdebug() {
 	mv "$CONFIG_PATH$CONFIG_NAME" "$CONFIG_PATH$CONFIG_NAME_DISABLED"
 }
 
+# Check if Xdebug extension is installed
+
+check_installed
+
 # Handle passed args
+
 case "$1" in
 	"")
 		error_message "Missing argument."
