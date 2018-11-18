@@ -38,17 +38,26 @@ function error_message() {
 }
 
 function success_message() {
-	echo -e "\n🐘 ${yellow}$1${off}\n"
+	echo -e "\n🐘 $1"
 }
 
 function help_message() {
-	echo -e "\nUsage:"
-	echo -e "  ${green}> xdebug${off} ${yellow}[arg]${off}\n"
-	echo -e "Available args:"
-	echo -e "  ${yellow}on${off}       – Toggles Xdebug on"
-	echo -e "  ${yellow}off${off}      – Toggles Xdebug off"
-	echo -e "  ${yellow}status${off}   - Shows Xdebug status"
-	echo -e "  ${yellow}help${off}     - Displays this help"
+	echo -e "\n   Usage:"
+	echo -e "     ${green}> xdebug${off} ${yellow}[arg]${off}\n"
+	echo -e "   Available args:"
+	echo -e "     ${yellow}on${off}       – Toggles Xdebug on"
+	echo -e "     ${yellow}off${off}      – Toggles Xdebug off"
+	echo -e "     ${yellow}status${off}   - Shows Xdebug status"
+	echo -e "     ${yellow}help${off}     - Displays this help"
+}
+
+function check_status() {
+	STATUS=`php -m | grep xdebug`
+	if [[ $STATUS == "" ]]; then
+		success_message "Xdebug extension is currently ${red}disabled${off}.\n   Run '${white}xdebug on${off}' to enable it."
+	else
+		success_message "Xdebug extension is currently ${green}enabled${off}.\n   Run '${white}xdebug off${off}' to disable it."
+	fi
 }
 
 # Handle passed args
@@ -69,7 +78,7 @@ case "$1" in
 		exit 0
 		;;
 	"status")
-		success_message "Checking Xdebug status..."
+		check_status
 		exit 0
 		;;
 	*)
