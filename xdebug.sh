@@ -34,21 +34,21 @@ off=$(tput sgr0)
 # Functions
 
 function error_message() {
-		echo -e "\n⚠️  ${red}$1${off}"
+	echo -e "\n⚠️  ${red}$1${off}"
 }
 
 function success_message() {
-		echo -e "\n🐘 ${yellow}$1${off}\n"
+	echo -e "\n🐘 ${yellow}$1${off}\n"
 }
 
 function help_message() {
-		echo -e "\nUsage:"
-		echo -e "  ${green}> xdebug${off} ${yellow}[arg]${off}\n"
-		echo -e "Available args:"
-		echo -e "  ${yellow}on${off}       – Toggles Xdebug on"
-		echo -e "  ${yellow}off${off}      – Toggles Xdebug off"
-		echo -e "  ${yellow}status${off}   - Shows Xdebug status"
-		echo -e "  ${yellow}help${off}     - Displays this help"
+	echo -e "\nUsage:"
+	echo -e "  ${green}> xdebug${off} ${yellow}[arg]${off}\n"
+	echo -e "Available args:"
+	echo -e "  ${yellow}on${off}       – Toggles Xdebug on"
+	echo -e "  ${yellow}off${off}      – Toggles Xdebug off"
+	echo -e "  ${yellow}status${off}   - Shows Xdebug status"
+	echo -e "  ${yellow}help${off}     - Displays this help"
 }
 
 # Handle passed args
