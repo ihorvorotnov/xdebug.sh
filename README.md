@@ -8,12 +8,12 @@ Toggle Xdebug PHP extension on and off, from command line.
 - [Homebrew](https://github.com/Homebrew/brew)
 - PHP installed via Homebrew
 - Xdebug extension installed via PECL
-- [Laravel Valet](https://github.com/laravel/valet) as local development environment
+- [Laravel Valet](https://github.com/laravel/valet) as your local development environment
 
 ## Additional Assumptions
 
 - Extensions config files are located in `/usr/local/etc/php/7.2/conf.d/` dir
-- Xdebug extension config file is named `ext-xdebug.ini`
+- Xdebug extension config file name is `ext-xdebug.ini`
 
 Both assumptions are planned to be removed in next update.
 
@@ -25,7 +25,13 @@ Both assumptions are planned to be removed in next update.
 4. Create symlink `ln -s /path/to/xdebug.sh /usr/local/sbin/xdebug`
 5. Run `xdebug help`
 
+## Update
+
+1. `cd` into the dir
+2. Run `git pull`
+
 ## Plans
 
-- Add automatic config discover
-- Make in installable via Homebrew
+- [ ] Add GIF screenshot
+- [ ] Add automatic config discovery
+- [ ] Make in installable via Homebrew
