@@ -43,12 +43,12 @@ function success_message() {
 
 function help_message() {
 		echo -e "\nUsage:"
-		echo -e "\n${green}> xdebug${off} ${yellow}[arg]${off}\n"
-		echo -e "Available args:\n"
-		echo -e "${yellow}on${off}       – Toggles Xdebug on"
-		echo -e "${yellow}off${off}      – Toggles Xdebug off"
-		echo -e "${yellow}status${off}   - Shows Xdebug status"
-		echo -e "${yellow}help${off}     - Displays this help"
+		echo -e "  ${green}> xdebug${off} ${yellow}[arg]${off}\n"
+		echo -e "Available args:"
+		echo -e "  ${yellow}on${off}       – Toggles Xdebug on"
+		echo -e "  ${yellow}off${off}      – Toggles Xdebug off"
+		echo -e "  ${yellow}status${off}   - Shows Xdebug status"
+		echo -e "  ${yellow}help${off}     - Displays this help"
 }
 
 # Handle passed args
@@ -73,7 +73,7 @@ case "$1" in
 		exit 0
 		;;
 	*)
-		error_message "Invalid argument."
+		error_message "Invalid argument '$1'."
 		help_message
 		exit 1
 		;;
