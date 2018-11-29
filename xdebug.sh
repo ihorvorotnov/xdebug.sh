@@ -22,7 +22,7 @@ set -u
 # Config data
 CONFIG_PATH="/usr/local/etc/php/7.2/conf.d/"
 CONFIG_NAME="ext-xdebug.ini"
-CONFIG_NAME_DISABLED="$CONFIG_NAME.disabled"
+CONFIG_NAME_DISABLED="${CONFIG_NAME}.disabled"
 
 # Colors
 black=$(tput setaf 0)
@@ -42,12 +42,12 @@ off=$(tput sgr0)
 
 # Print formatted error message
 function error_message() {
-	echo -e "\\n⚠️  ${red}$1${off}"
+	echo -e "\\n⚠️  ${red}${1}${off}"
 }
 
 # Print formatted success message
 function success_message() {
-	echo -e "\\n🐘 $1"
+	echo -e "\\n🐘 ${1}"
 }
 
 # Print formatted help/info message
@@ -70,7 +70,7 @@ function check_status() {
 # Print message corresponding to Xdebug status
 function status_message() {
 	check_status
-	if [[ $STATUS == "" ]]; then
+	if [[ "${STATUS}" == "" ]]; then
 		success_message "Xdebug extension is currently ${red}disabled${off}.\\n   Run '${white}xdebug on${off}' to enable it."
 	else
 		success_message "Xdebug extension is currently ${green}enabled${off}.\\n   Run '${white}xdebug off${off}' to disable it."
@@ -80,7 +80,7 @@ function status_message() {
 # Check if Xdebug is installed
 function check_installed() {
 	INSTALLED=$( pecl list | grep xdebug )
-	if [[ ${INSTALLED} == "" ]]; then
+	if [[ "${INSTALLED}" == "" ]]; then
 		error_message "It looks like Xdebug extension is not installed yet.\\n   Please install it via PECL first."
 		exit 1;
 	fi
@@ -88,12 +88,12 @@ function check_installed() {
 
 # Enable Xdebug config file
 function enable_xdebug() {
-	mv "$CONFIG_PATH$CONFIG_NAME_DISABLED" "$CONFIG_PATH$CONFIG_NAME"
+	mv "${CONFIG_PATH}${CONFIG_NAME_DISABLED}" "${CONFIG_PATH}${CONFIG_NAME}"
 }
 
 # Disable Xdebug config file
 function disable_xdebug() {
-	mv "$CONFIG_PATH$CONFIG_NAME" "$CONFIG_PATH$CONFIG_NAME_DISABLED"
+	mv "${CONFIG_PATH}${CONFIG_NAME}" "${CONFIG_PATH}${CONFIG_NAME_DISABLED}"
 }
 
 # ---
@@ -112,7 +112,7 @@ case "${1-}" in
 		;;
 	"on")
 		check_status
-		if [[ $STATUS != "" ]]; then
+		if [[ "${STATUS}" != "" ]]; then
 			success_message "Xdebug extension is already ${green}enabled${off}."
 			exit 1
 		fi
@@ -123,7 +123,7 @@ case "${1-}" in
 		;;
 	"off")
 		check_status
-		if [[ $STATUS == "" ]]; then
+		if [[ "${STATUS}" == "" ]]; then
 			success_message "Xdebug extension is already ${red}disabled${off}."
 			exit 1
 		fi
@@ -141,7 +141,7 @@ case "${1-}" in
 		exit 0
 		;;
 	*)
-		error_message "Invalid argument '$1'."
+		error_message "Invalid argument '${1}'."
 		help_message
 		exit 1
 		;;
