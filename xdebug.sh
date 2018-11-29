@@ -2,9 +2,9 @@
 #
 # Xdebug Toggle
 #
-# Toggles xdebug php extension on and off. 
+# Toggles xdebug php extension on and off.
 # Requires macOS, Homebrew and Laravel Valet.
-# 
+#
 # Project URL:  https://github.com/ihorvorotnov/xdebug
 # Author:       Ihor Vorotnov <ihor.vorotnov@gmail.com>
 # Author URL:   https://ihorvorotnov.com
