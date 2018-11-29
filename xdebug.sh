@@ -92,8 +92,7 @@ function disable_xdebug() {
 # ---
 
 # Check if Xdebug extension is installed, exit prematurely if not
-INSTALLED=$( pecl list | grep xdebug )
-if [[ "${INSTALLED}" == "" ]]; then
+if ! pecl list | grep 'xdebug' &> /dev/null; then
 	error_message "It looks like Xdebug extension is not installed yet.\\n   Please install it via PECL first."
 	exit 1;
 fi
