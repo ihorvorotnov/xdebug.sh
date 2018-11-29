@@ -77,15 +77,6 @@ function status_message() {
 	fi
 }
 
-# Check if Xdebug is installed
-function check_installed() {
-	INSTALLED=$( pecl list | grep xdebug )
-	if [[ "${INSTALLED}" == "" ]]; then
-		error_message "It looks like Xdebug extension is not installed yet.\\n   Please install it via PECL first."
-		exit 1;
-	fi
-}
-
 # Enable Xdebug config file
 function enable_xdebug() {
 	mv "${CONFIG_PATH}${CONFIG_NAME_DISABLED}" "${CONFIG_PATH}${CONFIG_NAME}"
@@ -100,8 +91,12 @@ function disable_xdebug() {
 # Run the app
 # ---
 
-# Check if Xdebug extension is installed
-check_installed
+# Check if Xdebug extension is installed, exit prematurely if not
+INSTALLED=$( pecl list | grep xdebug )
+if [[ "${INSTALLED}" == "" ]]; then
+	error_message "It looks like Xdebug extension is not installed yet.\\n   Please install it via PECL first."
+	exit 1;
+fi
 
 # Handle passed args
 case "${1-}" in
