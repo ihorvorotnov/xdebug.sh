@@ -62,7 +62,7 @@ function help_message() {
 
 # Check if Xdebug is enabled
 function check_status() {
-	STATUS=`php -m | grep xdebug`
+	STATUS=$( php -m | grep xdebug )
 	return
 }
 
@@ -78,8 +78,8 @@ function status_message() {
 
 # Check if Xdebug is installed
 function check_installed() {
-	INSTALLED=`pecl list | grep xdebug`
-	if [[ $INSTALLED == "" ]]; then
+	INSTALLED=$( pecl list | grep xdebug )
+	if [[ ${INSTALLED} == "" ]]; then
 		error_message "It looks like Xdebug extension is not installed yet.\n   Please install it via PECL first."
 		exit 1;
 	fi
