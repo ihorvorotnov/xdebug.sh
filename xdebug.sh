@@ -41,18 +41,18 @@ off=$(tput sgr0)
 
 # Print formatted error message
 function error_message() {
-	echo -e "\n⚠️  ${red}$1${off}"
+	echo -e "\\n⚠️  ${red}$1${off}"
 }
 
 # Print formatted success message
 function success_message() {
-	echo -e "\n🐘 $1"
+	echo -e "\\n🐘 $1"
 }
 
 # Print formatted help/info message
 function help_message() {
-	echo -e "\n   Usage:"
-	echo -e "     ${green}> xdebug${off} ${yellow}[arg]${off}\n"
+	echo -e "\\n   Usage:"
+	echo -e "     ${green}> xdebug${off} ${yellow}[arg]${off}\\n"
 	echo -e "   Available args:"
 	echo -e "     ${yellow}on${off}       – Toggles Xdebug on"
 	echo -e "     ${yellow}off${off}      – Toggles Xdebug off"
@@ -70,9 +70,9 @@ function check_status() {
 function status_message() {
 	check_status
 	if [[ $STATUS == "" ]]; then
-		success_message "Xdebug extension is currently ${red}disabled${off}.\n   Run '${white}xdebug on${off}' to enable it."
+		success_message "Xdebug extension is currently ${red}disabled${off}.\\n   Run '${white}xdebug on${off}' to enable it."
 	else
-		success_message "Xdebug extension is currently ${green}enabled${off}.\n   Run '${white}xdebug off${off}' to disable it."
+		success_message "Xdebug extension is currently ${green}enabled${off}.\\n   Run '${white}xdebug off${off}' to disable it."
 	fi
 }
 
@@ -80,7 +80,7 @@ function status_message() {
 function check_installed() {
 	INSTALLED=$( pecl list | grep xdebug )
 	if [[ ${INSTALLED} == "" ]]; then
-		error_message "It looks like Xdebug extension is not installed yet.\n   Please install it via PECL first."
+		error_message "It looks like Xdebug extension is not installed yet.\\n   Please install it via PECL first."
 		exit 1;
 	fi
 }
@@ -115,7 +115,7 @@ case "$1" in
 			success_message "Xdebug extension is already ${green}enabled${off}."
 			exit 1
 		fi
-		success_message "Enabling Xdebug...\n"
+		success_message "Enabling Xdebug...\\n"
 		enable_xdebug
 		valet restart
 		status_message
@@ -126,7 +126,7 @@ case "$1" in
 			success_message "Xdebug extension is already ${red}disabled${off}."
 			exit 1
 		fi
-		success_message "Disabling Xdebug...\n"
+		success_message "Disabling Xdebug...\\n"
 		disable_xdebug
 		valet restart
 		status_message
