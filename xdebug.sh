@@ -13,7 +13,7 @@
 #
 # @todo Add config path auto discovery
 #
-set -eu
+set -u
 
 # ---
 # Define variables
