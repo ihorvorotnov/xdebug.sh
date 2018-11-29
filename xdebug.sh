@@ -11,6 +11,8 @@
 # Version:      1.0
 # License:      MIT
 #
+# @todo Add config path auto discovery
+#
 
 # Define variables
 
