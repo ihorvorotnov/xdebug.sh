@@ -14,14 +14,16 @@
 # @todo Add config path auto discovery
 #
 
+# ---
 # Define variables
+# ---
 
+# Config data
 CONFIG_PATH="/usr/local/etc/php/7.2/conf.d/"
 CONFIG_NAME="ext-xdebug.ini"
 CONFIG_NAME_DISABLED="$CONFIG_NAME.disabled"
 
-# Define colors
-
+# Colors
 black=$(tput setaf 0)
 red=$(tput setaf 1)
 green=$(tput setaf 2)
@@ -33,16 +35,21 @@ white=$(tput setaf 7)
 gray=$(tput setaf 8)
 off=$(tput sgr0)
 
-# Functions
+# ---
+# Define functions
+# ---
 
+# Print formatted error message
 function error_message() {
 	echo -e "\n⚠️  ${red}$1${off}"
 }
 
+# Print formatted success message
 function success_message() {
 	echo -e "\n🐘 $1"
 }
 
+# Print formatted help/info message
 function help_message() {
 	echo -e "\n   Usage:"
 	echo -e "     ${green}> xdebug${off} ${yellow}[arg]${off}\n"
@@ -53,11 +60,13 @@ function help_message() {
 	echo -e "     ${yellow}help${off}     - Displays this help"
 }
 
+# Check if Xdebug is enabled
 function check_status() {
 	STATUS=`php -m | grep xdebug`
 	return
 }
 
+# Print message corresponding to Xdebug status
 function status_message() {
 	check_status
 	if [[ $STATUS == "" ]]; then
@@ -67,6 +76,7 @@ function status_message() {
 	fi
 }
 
+# Check if Xdebug is installed
 function check_installed() {
 	INSTALLED=`pecl list | grep xdebug`
 	if [[ $INSTALLED == "" ]]; then
@@ -75,20 +85,24 @@ function check_installed() {
 	fi
 }
 
+# Enable Xdebug config file
 function enable_xdebug() {
 	mv "$CONFIG_PATH$CONFIG_NAME_DISABLED" "$CONFIG_PATH$CONFIG_NAME"
 }
 
+# Disable Xdebug config file
 function disable_xdebug() {
 	mv "$CONFIG_PATH$CONFIG_NAME" "$CONFIG_PATH$CONFIG_NAME_DISABLED"
 }
 
-# Check if Xdebug extension is installed
+# ---
+# Run the app
+# ---
 
+# Check if Xdebug extension is installed
 check_installed
 
 # Handle passed args
-
 case "$1" in
 	"")
 		error_message "Missing argument."
