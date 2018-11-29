@@ -13,6 +13,7 @@
 #
 # @todo Add config path auto discovery
 #
+set -eu
 
 # ---
 # Define variables
@@ -103,7 +104,7 @@ function disable_xdebug() {
 check_installed
 
 # Handle passed args
-case "$1" in
+case "${1-}" in
 	"")
 		error_message "Missing argument."
 		help_message
