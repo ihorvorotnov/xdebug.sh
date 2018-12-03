@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -u
 #
 # Xdebug Toggle
 #
@@ -13,7 +13,6 @@
 #
 # @todo Add config path auto discovery
 #
-set -u
 
 # ---
 # Define variables
