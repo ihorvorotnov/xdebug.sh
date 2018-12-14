@@ -39,4 +39,5 @@ Toggle Xdebug PHP extension on and off, from command line. Also, quickly check s
 - [x] Add GIF screenshot
 - [x] Some sane refactoring
 - [x] Add automatic config discovery
+- [ ] Add `version` argument
 - [ ] Make in installable via Homebrew
