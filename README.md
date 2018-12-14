@@ -12,13 +12,6 @@ Toggle Xdebug PHP extension on and off, from command line. Also, quickly check s
 - Xdebug extension installed via PECL
 - [Laravel Valet](https://github.com/laravel/valet) as your local development environment
 
-## Assumptions
-
-- Extensions config files are located in `/usr/local/etc/php/7.2/conf.d/` dir
-- Xdebug extension config file name is `ext-xdebug.ini`
-
-Both assumptions are planned to be removed in next update.
-
 ## Installation & Usage
 
 1. Clone this repo somewhere
@@ -45,5 +38,5 @@ Both assumptions are planned to be removed in next update.
 
 - [x] Add GIF screenshot
 - [x] Some sane refactoring
-- [ ] Add automatic config discovery
+- [x] Add automatic config discovery
 - [ ] Make in installable via Homebrew
