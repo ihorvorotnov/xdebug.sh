@@ -8,10 +8,8 @@
 # Project URL:  https://github.com/ihorvorotnov/xdebug
 # Author:       Ihor Vorotnov <ihor.vorotnov@gmail.com>
 # Author URL:   https://ihorvorotnov.com
-# Version:      1.0
+# Version:      1.1
 # License:      MIT
-#
-# @todo Add config path auto discovery
 #
 
 # ---
@@ -19,9 +17,10 @@
 # ---
 
 # Config data
-CONFIG_PATH="/usr/local/etc/php/7.2/conf.d/"
-CONFIG_NAME="ext-xdebug.ini"
-CONFIG_NAME_DISABLED="${CONFIG_NAME}.disabled"
+PHP_VERSION="$(php -r "\$v=explode('.', PHP_VERSION ); echo implode('.', array_splice(\$v, 0, -1));")"
+CONFIG_PATH="$(brew --prefix)/etc/php/${PHP_VERSION}/conf.d"
+CONFIG_FILE="${CONFIG_PATH}/ext-xdebug.ini"
+CONFIG_FILE_DISABLED="${CONFIG_PATH}/ext-xdebug.ini.disabled"
 
 # Colors
 black=$(tput setaf 0)
@@ -78,12 +77,12 @@ function status_message() {
 
 # Enable Xdebug config file
 function enable_xdebug() {
-	mv "${CONFIG_PATH}${CONFIG_NAME_DISABLED}" "${CONFIG_PATH}${CONFIG_NAME}"
+	mv "${CONFIG_FILE_DISABLED}" "${CONFIG_FILE}"
 }
 
 # Disable Xdebug config file
 function disable_xdebug() {
-	mv "${CONFIG_PATH}${CONFIG_NAME}" "${CONFIG_PATH}${CONFIG_NAME_DISABLED}"
+	mv "${CONFIG_FILE}" "${CONFIG_FILE_DISABLED}"
 }
 
 # ---
