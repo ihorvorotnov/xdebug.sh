@@ -61,7 +61,7 @@ function help_message() {
 
 # Check if Xdebug is enabled
 function check_status() {
-	STATUS=$( php -m | grep xdebug )
+	STATUS="$(php -m | grep xdebug)"
 	return
 }
 
