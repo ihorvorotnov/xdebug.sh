@@ -1,6 +1,6 @@
 # Xdebug.sh
 
-Toggle Xdebug PHP extension on and off, from command line. Also, quickly check status (enabled/disabled).
+Toggle Xdebug PHP extension on and off, from command line. Also, quickly check status (enabled/disabled) and versions (PHP and Xdebug).
 
 ![Screencast](screenshot.gif)
 
@@ -27,6 +27,7 @@ Toggle Xdebug PHP extension on and off, from command line. Also, quickly check s
 | `xdebug on` | Turns on Xdebug extension and reloads PHP via Valet. Checks if it’s already enabled first. |
 | `xdebug off` | Turns off Xdebug extension and reloads PHP via Valet. Checks if it’s already disabled first. |
 | `xdebug status` | Checks whether Xdebug extension is enabled or not. |
+| `xdebug version` | Shows PHP and Xdebug versions. |
 | `xdebug help` | Shows this help. |
 
 ## Update
@@ -39,5 +40,5 @@ Toggle Xdebug PHP extension on and off, from command line. Also, quickly check s
 - [x] Add GIF screenshot
 - [x] Some sane refactoring
 - [x] Add automatic config discovery
-- [ ] Add `version` argument
+- [x] Add `version` argument
 - [ ] Make in installable via Homebrew

@@ -8,7 +8,7 @@
 # Project URL:  https://github.com/ihorvorotnov/xdebug
 # Author:       Ihor Vorotnov <ihor.vorotnov@gmail.com>
 # Author URL:   https://ihorvorotnov.com
-# Version:      1.1
+# Version:      1.2
 # License:      MIT
 #
 
@@ -56,6 +56,7 @@ function help_message() {
 	echo -e "     ${yellow}on${off}       – Toggles Xdebug on"
 	echo -e "     ${yellow}off${off}      – Toggles Xdebug off"
 	echo -e "     ${yellow}status${off}   - Shows Xdebug status"
+	echo -e "     ${yellow}version${off}  - Shows PHP and Xdebug versions"
 	echo -e "     ${yellow}help${off}     - Displays this help"
 }
 
@@ -83,6 +84,30 @@ function enable_xdebug() {
 # Disable Xdebug config file
 function disable_xdebug() {
 	mv "${CONFIG_FILE}" "${CONFIG_FILE_DISABLED}"
+}
+
+# Get PHP version
+function php_version() {
+	PHP_VERSION="$(php -r "echo PHP_VERSION;")"
+	return
+}
+
+# Get Xdebug version
+function xdebug_version() {
+	XDEBUG_VERSION="$(pecl list | grep xdebug | awk -F' ' '{print $2}')"
+	return
+}
+
+function versions_message() {
+	php_version
+	xdebug_version
+	check_status
+	if [[ "${STATUS}" == "" ]]; then
+		XDEBUG_STATUS="disabled"
+	else
+		XDEBUG_STATUS="enabled"
+	fi
+	success_message "PHP version:     ${blue}${PHP_VERSION}${off}\\n   Xdebug version:  ${blue}${XDEBUG_VERSION}${off} ${gray}(${XDEBUG_STATUS})${off}"
 }
 
 # ---
@@ -130,6 +155,10 @@ case "${1-}" in
 		;;
 	"status")
 		status_message
+		exit 0
+		;;
+	"version")
+		versions_message
 		exit 0
 		;;
 	*)
