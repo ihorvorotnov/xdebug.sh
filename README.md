@@ -41,7 +41,7 @@ Toggle Xdebug PHP extension on and off, from command line. Also, quickly check s
 - [x] Some sane refactoring
 - [x] Add automatic config discovery
 - [x] Add `version` argument
-- [ ] Restart only PHP with Valet
+- [x] Restart only PHP with Valet
 - [ ] Add `config` argument
 - [ ] Add `config path` argument
 - [ ] Add `config get $2` argument to get a particular value

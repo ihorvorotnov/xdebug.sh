@@ -8,7 +8,7 @@
 # Project URL:  https://github.com/ihorvorotnov/xdebug
 # Author:       Ihor Vorotnov <ihor.vorotnov@gmail.com>
 # Author URL:   https://ihorvorotnov.com
-# Version:      1.2
+# Version:      1.3
 # License:      MIT
 #
 
@@ -135,7 +135,7 @@ case "${1-}" in
 		fi
 		success_message "Enabling Xdebug...\\n"
 		enable_xdebug
-		valet restart
+		valet restart php
 		status_message
 		;;
 	"off")
@@ -146,7 +146,7 @@ case "${1-}" in
 		fi
 		success_message "Disabling Xdebug...\\n"
 		disable_xdebug
-		valet restart
+		valet restart php
 		status_message
 		;;
 	"help")
